@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trang web cá nhân học sinh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Baloo 2', cursive;
+      background: #f5efe6;
+      color: #5c3a24;
+      overflow-x: hidden;
+    }
+
+    /* ===== BONG BÓNG ===== */
+    .bubbles {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -150px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 0; }
+      10% { opacity: .6; }
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* ===== SAO RƠI NHIỀU ===== */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .star {
+      position: absolute;
+      top: -40px;
+      font-size: 22px;
+      animation: starFall linear infinite;
+      color: rgba(255,215,150,.95);
+    }
+
+    @keyframes starFall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(130vh) rotate(720deg); opacity: 0; }
+    }
+
+    header {
+      background: linear-gradient(135deg,#a97142,#7b4a2e);
+      text-align: center;
+      padding: 60px 20px 70px;
+      color: #fffaf3;
+    }
+
+    nav {
+      background: #5c3a24;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #f5efe6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fffaf3;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.1);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: .8s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skills span {
+      display: inline-block;
+      background: #f5efe6;
+      border: 2px dashed #a97142;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin: 6px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background: #f5efe6;
+      border-radius: 16px;
+      padding: 20px;
+      border: 2px solid #d8c2a8;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #d8c2a8;
+      margin-bottom: 10px;
+      font-family: 'Baloo 2';
+    }
+
+    button {
+      padding: 10px 22px;
+      border: none;
+      border-radius: 999px;
+      background: #7b4a2e;
+      color: #fffaf3;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- BONG BÓNG -->
+<div class="bubbles">
+  <div class="bubble" style="left:10%;width:40px;height:40px;animation-duration:18s;"></div>
+  <div class="bubble" style="left:30%;width:25px;height:25px;animation-duration:14s;"></div>
+  <div class="bubble" style="left:50%;width:60px;height:60px;animation-duration:22s;"></div>
+  <div class="bubble" style="left:70%;width:30px;height:30px;animation-duration:16s;"></div>
+</div>
+
+<!-- SAO RƠI -->
+<div class="stars">
+  <div class="star" style="left:5%;animation-duration:9s;">⭐</div>
+  <div class="star" style="left:15%;animation-duration:11s;">✨</div>
+  <div class="star" style="left:25%;animation-duration:8s;">⭐</div>
+  <div class="star" style="left:35%;animation-duration:10s;">✨</div>
+  <div class="star" style="left:45%;animation-duration:9s;">⭐</div>
+  <div class="star" style="left:55%;animation-duration:11s;">✨</div>
+  <div class="star" style="left:65%;animation-duration:8s;">⭐</div>
+  <div class="star" style="left:75%;animation-duration:10s;">✨</div>
+  <div class="star" style="left:85%;animation-duration:9s;">⭐</div>
+</div>
+
+<header>
+  <h1>Đỗ Đức Huy</h1>
+  <p>Học sinh lớp 12D5 · Trường THPT Nguyễn Khuyến</p>
+  <div class="flag">🇻🇳 ⭐</div>
+</header>
+
+<nav>
+  <a href="#gioithieu">Giới thiệu</a>
+  <a href="#hocvan">Học vấn</a>
+  <a href="#chia-se">Chia sẻ</a>
+  <a href="#sothich">Sở thích</a>
+  <a href="#duan">Hoạt động</a>
+  <a href="#lienhe">Liên hệ</a>
+</nav>
+
+<section id="gioithieu">
+  <h2>👋 Giới thiệu</h2>
+  <p>Xin chào! Mình là <strong>Đỗ Đức Huy</strong>, học sinh lớp 12D5 TRƯỜNG THPT NGUYỄN KHUYẾN 🌟</p>
+</section>
+
+<section id="hocvan">
+  <h2>🎓 Học vấn</h2>
+  <ul>
+    <li>Trường: THPT Nguyễn Khuyến</li>
+    <li>Lớp: 12D5</li>
+    <li>Ước mơ: Trở thành siêu nhân nhện 🕷️</li>
+  </ul>
+</section>
+
+<section id="chia-se">
+  <h2>🏫 Chia sẻ về THPT Nguyễn Khuyến</h2>
+  <p>
+    THPT Nguyễn Khuyến là nơi lưu giữ thanh xuân,
+    thầy cô tận tâm, bạn bè 12D5 đoàn kết và đầy kỷ niệm đẹp.
+  </p>
+
+  <h3>✍️ Gửi chia sẻ của bạn</h3>
+  <form>
+    <input type="text" placeholder="Tên của bạn">
+    <textarea rows="4" placeholder="Cảm nghĩ về mái trường..."></textarea>
+    <button type="submit">Gửi ⭐</button>
+  </form>
+</section>
+
+<section id="sothich">
+  <h2>💡 Sở thích</h2>
+  <div class="skills">
+    <span>Tennis · Pickleball · Bóng đá</span>
+    <span>Sưu tầm xe mô hình</span>
+    <span>Sơn Tùng MTP</span>
+    <span>Màu nâu – kem – đen</span>
+    <span>Phim hành động · Khoa học viễn tưởng</span>
+  </div>
+</section>
+
+<section id="duan">
+  <h2>🚀 Hoạt động</h2>
+  <div class="projects">
+    <div class="project">
+      <p>📅 Tham gia phong trào của trường </p>
+    </div>
+    <div class="project">
+      <h3>📝 Thơ</h3>
+      <p>
+        Xuân về hoa nở trước sân<br>
+        Gia đình sum họp ân cần yêu thương<br>
+        Chúc nhau năm mới cát tường<br>
+        An vui hạnh phúc vấn vương tiếng cười.
+      </p>
+    </div>
+  </div>
+</section>
+<section id="tkb">
+  <title>Thời Khóa Biểu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 40px auto;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        caption {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <caption>THỜI KHÓA BIỂU</caption>
+   <tr>
+        <th>Tiết</th>
+        <th>Thứ 2</th>
+        <th>Thứ 3</th>
+        <th>Thứ 4</th>
+        <th>Thứ 5</th>
+        <th>Thứ 6</th>
+        <th>Thứ 7</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>HĐTNHN</td>
+        <td>Tin học</td>
+        <td>Ngữ văn</td>
+        <td>toán</td>
+        <td>GDKTPL</td>
+        <td>Địa lí</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>GDLSĐP</td> 
+        <td>Tin học</td>
+        <td>Ngữ văn</td>
+        <td>toán</td>
+        <td>GDKTPL</td>
+        <td>Địa lí</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>lịch sử</td>
+        <td>ngoại ngữ</td>
+        <td>GDTC</td>
+        <td>Ngoại ngữ</td>
+        <td>Lịch sử</td>
+        <td>văn</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>hóa</td>
+        <td>toán ht</td>
+        <td>toán</td>
+        <td>ngoại ngữ</td>
+        <td>văn ht</td>
+        <td>GDTC</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>hóa</td>
+        <td>toán ht</td>
+        <td>toán</td>
+        <td>ngữ văn</td>
+        <td>văn ht</td>
+        <td>HĐTN</td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+<section id="lienhe">
+  <h2>📬 Liên hệ</h2>
+  <p>Email: huyvn1123@gmail.com</p>
+  <p>Facebook: facebook.com/duchuy12d5</p>
+</section>
+
+<footer>
+  <p>Made with ❤️ by Đỗ Đức Huy</p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
